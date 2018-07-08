@@ -21,7 +21,7 @@ func main() {
 	}
 
 	if len(args) < 3 {
-		fmt.Println("Arguments are required, use format: pwext {file location} {password length} {exluded characters} {optional: ignore prefix length}")
+		fmt.Println("Arguments are required, usage: pwext {file location} {password length} {exluded characters} {optional: ignore prefix length}")
 		return
 	}
 
@@ -45,10 +45,10 @@ func main() {
 	for line := 1; scanner.Scan(); line++ {
 		runes := []rune(scanner.Text())
 
-		for x := ignorePrefix; x <= (len(scanner.Text()) - 14); {
+		for x := ignorePrefix; x <= (len(scanner.Text()) - passwordLength); {
 			if !strings.ContainsAny(string(runes[x:(x+passwordLength)]), excludeRunes) {
 				fmt.Println(string(runes[x : x+passwordLength]))
-				x += 14
+				x += passwordLength
 			} else {
 				x++
 			}
