@@ -13,15 +13,15 @@ func main() {
 
 	args := os.Args[1:]
 
+	if len(args) < 3 {
+		fmt.Println("Arguments are required, usage: pwext {file location} {password length} {exluded characters} {optional: ignore prefix length}")
+		return
+	}
+
 	if args[0] == "/help" || args[0] == "--help" || args[0] == "-h" || args[0] == "-help" {
 		fmt.Println("\nExtracts passwords from a file.")
 		fmt.Println()
 		fmt.Println("usage: pwext {file location} {password length} {exluded characters} {optional: ignore prefix length}")
-		return
-	}
-
-	if len(args) < 3 {
-		fmt.Println("Arguments are required, usage: pwext {file location} {password length} {exluded characters} {optional: ignore prefix length}")
 		return
 	}
 
